@@ -25,9 +25,9 @@
                                 <img src="img/boolean-logo.png" alt="">
                         </div>
                         <div class="center p-3">
-                                <input class="rounded me-4" type="text" v-model="newTodo" placeholder="Cosa vuoi fare?">
+                                <input class="rounded me-4" type="text" @keyup.enter="submit" v-model="newTodo" placeholder="Cosa vuoi fare?">
         
-                                <button id="add-button" class="rounded px-2" @click="addTodo()">
+                                <button id="add-button" class="rounded px-2" @click="addTodo()" >
                                         Aggiungi
                                 </button>
                         </div>

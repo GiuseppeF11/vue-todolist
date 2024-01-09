@@ -27,6 +27,15 @@ createApp ({
                 this.newTodo = '';
             }
         },
+        submit() {
+            if (this.newTodo.trim().length > 0) {
+                let obj = {};
+                obj.text = this.newTodo;
+                obj.done = false;
+                this.todos.push(obj);
+                this.newTodo = '';
+            }
+        },
         removeTodo(i) {
             console.log(i, this.todos[i]);
             this.todos.splice(i, 1);
