@@ -42,7 +42,8 @@ createApp ({
         },
 
         doIt(i) {
-            this.obj.done = true;
+            console.log('Cliccato text')
+            this.todos[i].done = !(this.todos[i].done);
         }
     }
 }).mount('#app');
