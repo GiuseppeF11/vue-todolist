@@ -20,27 +20,35 @@
 
 <body>
         <div id="app">
-                <div>
-                        <input type="text" v-model="newTodo" placeholder="Cosa vuoi fare?">
-
-                        <button @click="addTodo()">
-                                Aggiungi in lista
-                        </button>
-                </div>
-
-                <div>
-                        <ul v-if="todos.length > 0">
-                                <li v-for="(singleToDo, indiceDelTodo) in todos">
-                                        {{singleToDo}}
-
-                                        <button @click="removeTodo(indiceDelTodo)">
-                                                X
-                                        </button>
-                                </li>
-                        </ul>
-                        <p v-else>
-                                Non ci sono task
-                        </p>
+                <div class="container py-5">
+                        <div class="center">
+                                <img src="img/boolean-logo.png" alt="">
+                        </div>
+                        <div class="center p-3">
+                                <input class="rounded me-4" type="text" v-model="newTodo" placeholder="Cosa vuoi fare?">
+        
+                                <button id="add-button" class="rounded px-2" @click="addTodo()">
+                                        Aggiungi
+                                </button>
+                        </div>
+        
+                        <div>
+                                <ul v-if="todos.length > 0">
+                                        <li class="my-2" v-for="(singleToDo, indiceDelTodo) in todos">
+                                                <span 
+                                                        :class="singleToDo.done == true ? 'done': ''"
+                                                        @click="doIt(indiceDelTodo)">
+                                                        {{singleToDo.text}}
+                                                </span>
+                                                <button @click="removeTodo(indiceDelTodo)">
+                                                        <i class="fa-solid fa-xmark"></i>
+                                                </button>
+                                        </li>
+                                </ul>
+                                <p v-else>
+                                        Aggiungi qualcosa...
+                                </p>
+                        </div>
                 </div>
         </div>
 

@@ -4,19 +4,36 @@ createApp ({
     data() {
         return {
             newTodo:'',
-            todos: [],
+            todos: 
+            [
+                {
+                    text: 'fare compiti',
+                    done: false,
+                },
+                {
+                    text: 'fare la spesa',
+                    done: true,
+                }
+            ]
         };
     },
     methods: {
         addTodo() {
             if (this.newTodo.trim().length > 0) {
-                this.todos.push(this.newTodo.trim());
+                let obj = {};
+                obj.text = this.newTodo;
+                obj.done = false;
+                this.todos.push(obj);
                 this.newTodo = '';
             }
         },
         removeTodo(i) {
             console.log(i, this.todos[i]);
             this.todos.splice(i, 1);
+        },
+
+        doIt(i) {
+            this.obj.done = true;
         }
     }
 }).mount('#app');
