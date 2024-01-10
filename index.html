@@ -25,7 +25,7 @@
                                 <img src="img/boolean-logo.png" alt="">
                         </div>
                         <div class="center p-3">
-                                <input class="rounded me-4" type="text" @keyup.enter="submit" v-model="newTodo" placeholder="Cosa vuoi fare?">
+                                <input class="rounded me-4" type="text" @keyup.enter="addTodo()" v-model="newTodo" placeholder="Cosa vuoi fare?"> <!-- v-model crea una connessione bilaterale tra il value dell'input(newTodo) e Vue così da utilizzarlo nelle funzioni che ci interessano-->
         
                                 <button id="add-button" class="rounded px-2" @click="addTodo()" >
                                         Aggiungi
@@ -34,13 +34,13 @@
         
                         <div>
                                 <ul v-if="todos.length > 0">
-                                        <li class="my-2" v-for="(singleToDo, indiceDelTodo) in todos">
+                                        <li class="my-2" v-for="(todo, i) in todos"> <!-- ciclo l'iesimo todo nella lista todos -->
                                                 <span 
-                                                        :class="singleToDo.done == true ? 'done': ''"
-                                                        @click="doIt(indiceDelTodo)">
-                                                        {{singleToDo.text}}
+                                                        :class="todo.done == true ? 'done': ''"
+                                                        @click="doIt(i)">
+                                                        {{todo.text}}
                                                 </span>
-                                                <button @click="removeTodo(indiceDelTodo)">
+                                                <button @click="removeTodo(i)">
                                                         <i class="fa-solid fa-xmark"></i>
                                                 </button>
                                         </li>
